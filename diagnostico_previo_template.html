@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico Prévio - Igor Brazão</title>
+    <style>
+        @page {
+            margin: 2cm;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            padding: 40px;
+            max-width: 210mm;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #2c5aa0;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            max-width: 150px;
+            margin-bottom: 15px;
+        }
+
+        .header-text {
+            color: #2c5aa0;
+            font-size: 11px;
+            font-weight: normal;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .contact-info {
+            font-size: 10px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .title-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .main-title {
+            font-size: 24px;
+            color: #2c5aa0;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .parties {
+            margin: 30px 0;
+            font-size: 13px;
+        }
+
+        .parties p {
+            margin: 8px 0;
+        }
+
+        .parties strong {
+            color: #2c5aa0;
+        }
+
+        .section {
+            margin: 30px 0;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2c5aa0;
+            border-bottom: 2px solid #2c5aa0;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .section-content {
+            font-size: 13px;
+            text-align: justify;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #2c5aa0;
+            padding: 15px 20px;
+            margin: 20px 0;
+        }
+
+        .info-box-title {
+            font-weight: bold;
+            color: #2c5aa0;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+
+        .info-item {
+            margin: 8px 0;
+            font-size: 13px;
+        }
+
+        .info-item strong {
+            color: #555;
+        }
+
+        .highlight-box {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .highlight-box-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .findings-list {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .findings-list li {
+            margin: 10px 0;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 12px;
+        }
+
+        .data-table th {
+            background: #2c5aa0;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .data-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .conclusion-box {
+            background: #e7f3ff;
+            border: 2px solid #2c5aa0;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+
+        .conclusion-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2c5aa0;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .conclusion-item {
+            margin: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .conclusion-item::before {
+            content: "▪";
+            position: absolute;
+            left: 10px;
+            color: #2c5aa0;
+            font-size: 18px;
+        }
+
+        .signature-section {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .signature-date {
+            font-size: 12px;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .signature-line {
+            border-top: 2px solid #333;
+            width: 300px;
+            margin: 0 auto 10px;
+        }
+
+        .signature-name {
+            font-weight: bold;
+            font-size: 14px;
+            color: #2c5aa0;
+        }
+
+        .signature-title {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #2c5aa0;
+            text-align: center;
+            font-size: 10px;
+            color: #666;
+        }
+
+        .value-highlight {
+            color: #2c5aa0;
+            font-weight: bold;
+        }
+
+        .warning-text {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+            }
+            
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <div class="header">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADSSURBVDhPY/wPBAx4wf9///4xAAGjEUMNMBrGMAzjf/D/////GRkZGf///w8E/xn+//v3jwEI/v37x/D//38GBgYGhv///zP8//+f4f///wz///9n+P//P8P///8Z/v//z/D//3+G///+M/z//5/h////DP/+/2f49+8/w79//xj+/fvH8O/fP4Z///4x/Pv3j+Hfv38M//79Y/j37x/Dv3//GP79+8fw798/hn///jH8+/eP4d+/fwz//v1j+PfvH8O/f/8Y/v37x/Dv3z+Gf//+Mfz7949hCAAAD3bAZ6s4A6YAAAAASUVORK5CYII=" alt="Igor Brazão Logo" class="logo">
+        <div class="header-text">PERÍCIA | CONSULTORIA | ADMINISTRAÇÃO JUDICIAL</div>
+        <div class="contact-info">www.igorbrazao.com.br | (21) 99326-2984</div>
+    </div>
+
+    <!-- Título do Documento -->
+    <div class="title-section">
+        <h1 class="main-title">Diagnóstico Prévio</h1>
+        <p class="subtitle">Análise de Viabilidade de Revisão Contratual</p>
+    </div>
+
+    <!-- Informações das Partes -->
+    <div class="parties">
+        <p><strong>CONSULENTE:</strong> <span id="consulente-nome">[NOME DO CLIENTE]</span></p>
+        <p><strong>INSTITUIÇÃO FINANCEIRA:</strong> <span id="instituicao-nome">[NOME DO BANCO]</span></p>
+        <p><strong>TIPO DE CONTRATO:</strong> <span id="tipo-contrato">[TIPO]</span></p>
+        <p><strong>DATA DA ANÁLISE:</strong> <span id="data-analise">[DATA]</span></p>
+    </div>
+
+    <!-- Seção 1: Características do Contrato -->
+    <div class="section">
+        <h2 class="section-title">1. Características do Contrato Analisado</h2>
+        <div class="section-content">
+            <p>O presente diagnóstico prévio foi elaborado com base na análise preliminar do contrato de <span id="tipo-operacao">[TIPO DE OPERAÇÃO]</span> fornecido pelo consulente. O objetivo desta análise é identificar possíveis irregularidades e avaliar a viabilidade de uma revisão judicial do contrato.</p>
+        </div>
+
+        <div class="info-box">
+            <div class="info-box-title">DADOS DO CONTRATO:</div>
+            <div class="info-item"><strong>Número do Contrato:</strong> <span id="numero-contrato">[NÚMERO]</span></div>
+            <div class="info-item"><strong>Data de Contratação:</strong> <span id="data-contratacao">[DATA]</span></div>
+            <div class="info-item"><strong>Valor Financiado:</strong> R$ <span id="valor-financiado">[VALOR]</span></div>
+            <div class="info-item"><strong>Taxa de Juros Contratual:</strong> <span id="taxa-juros">[TAXA]</span>% ao mês</div>
+            <div class="info-item"><strong>CET (Custo Efetivo Total):</strong> <span id="cet">[CET]</span>% ao mês</div>
+            <div class="info-item"><strong>Prazo:</strong> <span id="prazo">[PRAZO]</span> meses</div>
+            <div class="info-item"><strong>Valor da Parcela:</strong> R$ <span id="valor-parcela">[VALOR]</span></div>
+        </div>
+    </div>
+
+    <!-- Seção 2: Análise Técnica -->
+    <div class="section">
+        <h2 class="section-title">2. Análise Técnica Preliminar</h2>
+        <div class="section-content">
+            <p>Realizou-se uma análise comparativa entre os juros praticados no contrato e a média de mercado para operações similares, conforme metodologia técnico-econômica estabelecida.</p>
+        </div>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th style="text-align: center;">Valor/Taxa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Taxa de Juros Contratual</strong></td>
+                    <td style="text-align: center;"><span id="taxa-contratual-tabela" class="value-highlight">[TAXA]</span>% a.m.</td>
+                </tr>
+                <tr>
+                    <td><strong>Taxa Média de Mercado*</strong></td>
+                    <td style="text-align: center;"><span id="taxa-mercado-tabela" class="value-highlight">[TAXA]</span>% a.m.</td>
+                </tr>
+                <tr>
+                    <td><strong>Diferença Identificada</strong></td>
+                    <td style="text-align: center;"><span id="diferenca-tabela" class="warning-text">[DIFERENÇA]</span>% a.m.</td>
+                </tr>
+                <tr>
+                    <td><strong>Acessórios Cobrados</strong></td>
+                    <td style="text-align: center;">R$ <span id="acessorios-tabela">[VALOR]</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size: 11px; font-style: italic; margin-top: 10px;">* Fonte: Banco Central do Brasil - Taxa média para a modalidade no período da contratação</p>
+    </div>
+
+    <!-- Seção 3: Irregularidades Identificadas -->
+    <div class="section">
+        <h2 class="section-title">3. Irregularidades Identificadas</h2>
+        <div class="section-content">
+            <p>Com base na análise preliminar realizada, foram identificados os seguintes pontos que caracterizam possível onerosidade excessiva e/ou cobranças abusivas:</p>
+        </div>
+
+        <div class="highlight-box">
+            <div class="highlight-box-title">⚠️ PRINCIPAIS ACHADOS:</div>
+            <ul class="findings-list">
+                <li><strong>Juros Abusivos:</strong> A taxa de juros praticada excede significativamente a média de mercado para operações similares, caracterizando onerosidade excessiva.</li>
+                <li><strong>Acessórios Indevidos:</strong> Identificou-se a cobrança de seguro, tarifa de cadastro e registro embutidos no valor financiado, elevando artificialmente o montante devido.</li>
+                <li><strong>Capitalização de Juros:</strong> Verificou-se a aplicação de juros sobre juros, o que pode configurar anatocismo.</li>
+                <li><strong>Falta de Transparência:</strong> O CET apresentado não reflete o custo real da operação devido às cobranças adicionais não explicitadas adequadamente.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Seção 4: Projeção de Economia -->
+    <div class="section">
+        <h2 class="section-title">4. Projeção de Economia com a Revisão</h2>
+        <div class="section-content">
+            <p>Caso seja determinada judicialmente a revisão do contrato, aplicando-se as taxas médias de mercado e excluindo-se as cobranças abusivas, estima-se a seguinte economia:</p>
+        </div>
+
+        <div class="info-box">
+            <div class="info-box-title">ESTIMATIVA DE VALORES:</div>
+            <div class="info-item"><strong>Valor Total Pago até o momento:</strong> R$ <span id="total-pago">[VALOR]</span></div>
+            <div class="info-item"><strong>Valor que deveria ter sido pago:</strong> R$ <span id="total-devido">[VALOR]</span></div>
+            <div class="info-item"><strong>Diferença a restituir:</strong> <span class="value-highlight">R$ <span id="diferenca-restituir">[VALOR]</span></span></div>
+            <div class="info-item"><strong>Nova parcela (parcelas restantes):</strong> R$ <span id="nova-parcela">[VALOR]</span></div>
+            <div class="info-item"><strong>Economia mensal estimada:</strong> <span class="value-highlight">R$ <span id="economia-mensal">[VALOR]</span></span></div>
+            <div class="info-item"><strong>Economia total estimada:</strong> <span class="value-highlight">R$ <span id="economia-total">[VALOR]</span></span></div>
+        </div>
+    </div>
+
+    <!-- Conclusão -->
+    <div class="conclusion-box">
+        <div class="conclusion-title">Conclusão do Diagnóstico Prévio</div>
+        
+        <div class="conclusion-item">
+            <strong>EXISTE VIABILIDADE JURÍDICA E ECONÔMICA</strong> para a propositura de ação revisional do contrato analisado.
+        </div>
+
+        <div class="conclusion-item">
+            A análise preliminar identificou <strong>onerosidade excessiva</strong> na taxa de juros praticada, significativamente superior à média de mercado.
+        </div>
+
+        <div class="conclusion-item">
+            Foram detectadas <strong>cobranças abusivas</strong> de acessórios (seguro, tarifa de cadastro e registro) no valor de <strong>R$ <span id="conclusao-acessorios">[VALOR]</span></strong>, embutidos no valor financiado.
+        </div>
+
+        <div class="conclusion-item">
+            A economia total estimada com a revisão judicial do contrato é de aproximadamente <strong class="value-highlight">R$ <span id="conclusao-economia">[VALOR]</span></strong>.
+        </div>
+
+        <div class="conclusion-item">
+            <strong>RECOMENDA-SE</strong> a elaboração de parecer técnico completo e a propositura de ação revisional de contrato bancário.
+        </div>
+    </div>
+
+    <!-- Observações Finais -->
+    <div class="section">
+        <h2 class="section-title">5. Observações Importantes</h2>
+        <div class="section-content">
+            <p>Este documento constitui uma análise preliminar baseada nas informações fornecidas pelo consulente. Para a propositura da ação judicial, será necessária a elaboração de <strong>Parecer Técnico Econômico-Financeiro completo</strong>, contendo:</p>
+            
+            <ul style="margin: 15px 0 15px 30px; font-size: 13px; line-height: 1.8;">
+                <li>Análise detalhada de todas as cláusulas contratuais;</li>
+                <li>Apuração exata dos valores cobrados indevidamente;</li>
+                <li>Recálculo completo do saldo devedor;</li>
+                <li>Demonstrativo de evolução da dívida;</li>
+                <li>Fundamentação técnica e legal;</li>
+                <li>Planilhas e anexos comprobatórios.</li>
+            </ul>
+
+            <p>O presente diagnóstico tem caráter <strong>informativo e opinativo</strong>, não substituindo o parecer técnico formal necessário para instrução processual.</p>
+        </div>
+    </div>
+
+    <!-- Assinatura -->
+    <div class="signature-section">
+        <p class="signature-date">Rio de Janeiro, <span id="data-assinatura">[DATA POR EXTENSO]</span>.</p>
+        
+        <div class="signature-line"></div>
+        <p class="signature-name">Igor Leal Brazão</p>
+        <p class="signature-title">ECONOMISTA PERITO – Corecon/RJ-25013</p>
+    </div>
+
+    <!-- Rodapé -->
+    <div class="footer">
+        <p><strong>Igor Brazão - PERÍCIAS</strong></p>
+        <p>PERÍCIA | CONSULTORIA | ADMINISTRAÇÃO JUDICIAL</p>
+        <p>www.igorbrazao.com.br | (21) 99326-2984</p>
+    </div>
+
+    <!-- Script para preenchimento dinâmico (opcional) -->
+    <script>
+        // Exemplo de como preencher os campos dinamicamente
+        // Este script pode ser removido se você for preencher manualmente ou via backend
+        
+        /*
+        document.getElementById('consulente-nome').textContent = 'NOME DO CLIENTE';
+        document.getElementById('instituicao-nome').textContent = 'BANCO XYZ S.A.';
+        document.getElementById('tipo-contrato').textContent = 'Financiamento de Veículo';
+        document.getElementById('data-analise').textContent = new Date().toLocaleDateString('pt-BR');
+        // ... e assim por diante para todos os campos
+        */
+    </script>
+</body>
+</html>
