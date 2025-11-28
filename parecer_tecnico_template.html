@@ -1,1038 +1,390 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parecer Técnico Econômico-Financeiro - Igor Brazão</title>
-    <style>
-        @page {
-            margin: 2cm;
-            @bottom-center {
-                content: "Igor Brazão | www.igorbrazao.com.br | (21) 99326-2984";
-                font-size: 9px;
-                color: #666;
-            }
-        }
+  <meta charset="utf-8">
+  <title>Parecer Técnico Econômico-Financeiro</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 20mm 18mm 22mm 18mm;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    body {
+      font-family: "Open Sans", Arial, Helvetica, sans-serif;
+      color: #101010;
+      font-size: 11pt;
+      line-height: 1.6;
+    }
 
-        body {
-            font-family: 'Times New Roman', Times, serif;
-            line-height: 1.6;
-            color: #333;
-            background: #fff;
-            padding: 40px;
-            max-width: 210mm;
-            margin: 0 auto;
-        }
+    h1, h2, h3, h4 {
+      font-family: "Merriweather", "Times New Roman", serif;
+      margin: 0 0 6px;
+      font-weight: 700;
+      color: #113f73;
+    }
 
-        .header {
-            text-align: center;
-            border-bottom: 3px solid #2c5aa0;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-        }
+    h1 { font-size: 18pt; text-transform: uppercase; letter-spacing: .4px; text-align: center; }
+    h2 { font-size: 13.5pt; margin-top: 14px; border-bottom: 1px solid #d0d7e2; padding-bottom: 3px; }
+    h3 { font-size: 12pt; margin-top: 10px; }
+    h4 { font-size: 11pt; margin-top: 8px; }
 
-        .logo {
-            max-width: 150px;
-            margin-bottom: 15px;
-        }
+    p  { margin: 4px 0 6px; text-align: justify; }
 
-        .header-text {
-            color: #2c5aa0;
-            font-size: 11px;
-            font-weight: normal;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+    .wrap   { width: 100%; }
+    .header { border-bottom: 2px solid #d0d7e2; padding-bottom: 10px; margin-bottom: 16px; display: flex; align-items: center; }
+    .logo   { width: 70px; height: auto; margin-right: 14px; }
+    .header-text { font-size: 10pt; color: #555; }
 
-        .contact-info {
-            font-size: 10px;
-            color: #666;
-            margin-top: 10px;
-        }
+    .meta-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 6px 0 12px;
+      font-size: 10pt;
+    }
 
-        .addressee {
-            text-align: center;
-            margin: 40px 0 30px;
-        }
+    .meta-table td {
+      padding: 3px 4px;
+    }
 
-        .addressee-title {
-            font-size: 18px;
-            font-weight: normal;
-            margin-bottom: 20px;
-        }
+    .meta-label {
+      width: 26%;
+      color: #555;
+      font-weight: 600;
+    }
 
-        .parties {
-            margin: 30px 0;
-            font-size: 13px;
-        }
+    .meta-value {
+      color: #111;
+    }
 
-        .parties p {
-            margin: 10px 0;
-        }
+    table.data {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0 12px;
+      font-size: 10pt;
+    }
 
-        .parties strong {
-            text-transform: uppercase;
-        }
+    table.data th,
+    table.data td {
+      border: 1px solid #d4dde8;
+      padding: 5px 6px;
+      text-align: right;
+    }
 
-        .document-title {
-            text-align: center;
-            margin: 40px 0;
-        }
+    table.data th {
+      text-align: center;
+      background: #f0f3f9;
+      font-weight: 700;
+      color: #1c3250;
+    }
 
-        .main-title {
-            font-size: 20px;
-            font-weight: bold;
-            color: #2c5aa0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+    table.data td.label {
+      text-align: left;
+      font-weight: 600;
+      color: #333;
+      background: #fafbfe;
+    }
 
-        .toc {
-            margin: 40px 0;
-            padding: 20px;
-            background: #f8f9fa;
-            border-left: 4px solid #2c5aa0;
-        }
+    .highlight-number {
+      font-weight: 700;
+      color: #174f93;
+    }
 
-        .toc-title {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #2c5aa0;
-            text-transform: uppercase;
-        }
+    .highlight-bad {
+      font-weight: 700;
+      color: #b02a2a;
+    }
 
-        .toc-item {
-            margin: 8px 0;
-            font-size: 13px;
-            padding-left: 10px;
-        }
+    .highlight-good {
+      font-weight: 700;
+      color: #137b3a;
+    }
 
-        .toc-item a {
-            color: #333;
-            text-decoration: none;
-        }
+    .small {
+      font-size: 9pt;
+      color: #555;
+    }
 
-        .toc-item a:hover {
-            color: #2c5aa0;
-            text-decoration: underline;
-        }
-
-        .page-break {
-            page-break-after: always;
-        }
-
-        .section {
-            margin: 30px 0;
-        }
-
-        .section-title {
-            font-size: 15px;
-            font-weight: bold;
-            color: #2c5aa0;
-            border-bottom: 2px solid #2c5aa0;
-            padding-bottom: 8px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .section-content {
-            font-size: 13px;
-            text-align: justify;
-            line-height: 1.8;
-            margin-bottom: 15px;
-        }
-
-        .subsection-title {
-            font-size: 14px;
-            font-weight: bold;
-            color: #2c5aa0;
-            margin: 20px 0 10px;
-        }
-
-        .info-box {
-            background: #f8f9fa;
-            border-left: 4px solid #2c5aa0;
-            padding: 15px 20px;
-            margin: 20px 0;
-        }
-
-        .contract-data {
-            margin: 20px 0;
-        }
-
-        .contract-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-            font-size: 11px;
-        }
-
-        .contract-table th {
-            background: #2c5aa0;
-            color: white;
-            padding: 8px;
-            text-align: left;
-            font-weight: bold;
-            font-size: 10px;
-        }
-
-        .contract-table td {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-
-        .contract-table tr:nth-child(even) {
-            background: #f8f9fa;
-        }
-
-        .contract-table .label-col {
-            background: #e9ecef;
-            font-weight: bold;
-            width: 60%;
-        }
-
-        .contract-table .value-col {
-            text-align: center;
-            width: 40%;
-        }
-
-        .amortization-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-            font-size: 10px;
-        }
-
-        .amortization-table th {
-            background: #2c5aa0;
-            color: white;
-            padding: 8px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 9px;
-        }
-
-        .amortization-table td {
-            border: 1px solid #ddd;
-            padding: 6px;
-            text-align: center;
-        }
-
-        .amortization-table tr:nth-child(even) {
-            background: #f8f9fa;
-        }
-
-        .amortization-table .total-row {
-            background: #e9ecef;
-            font-weight: bold;
-        }
-
-        .highlight-value {
-            color: #2c5aa0;
-            font-weight: bold;
-        }
-
-        .warning-value {
-            color: #dc3545;
-            font-weight: bold;
-        }
-
-        .success-value {
-            color: #28a745;
-            font-weight: bold;
-        }
-
-        .conclusion-box {
-            background: #e7f3ff;
-            border: 2px solid #2c5aa0;
-            padding: 25px;
-            margin: 30px 0;
-            border-radius: 4px;
-        }
-
-        .conclusion-title {
-            font-size: 16px;
-            font-weight: bold;
-            color: #2c5aa0;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            text-align: center;
-        }
-
-        .conclusion-content {
-            font-size: 13px;
-            text-align: justify;
-            line-height: 1.8;
-            margin-bottom: 15px;
-        }
-
-        .conclusion-list {
-            margin: 20px 0;
-        }
-
-        .conclusion-item {
-            margin: 15px 0;
-            padding: 15px 20px 15px 40px;
-            background: white;
-            border-left: 3px solid #2c5aa0;
-            position: relative;
-            font-size: 13px;
-            line-height: 1.8;
-        }
-
-        .conclusion-item-number {
-            position: absolute;
-            left: 15px;
-            font-weight: bold;
-            color: #2c5aa0;
-        }
-
-        .signature-section {
-            margin-top: 60px;
-            text-align: center;
-        }
-
-        .signature-date {
-            font-size: 12px;
-            margin-bottom: 50px;
-            font-style: italic;
-        }
-
-        .signature-line {
-            border-top: 2px solid #333;
-            width: 350px;
-            margin: 0 auto 10px;
-        }
-
-        .signature-name {
-            font-weight: bold;
-            font-size: 14px;
-            color: #2c5aa0;
-        }
-
-        .signature-title {
-            font-size: 12px;
-            color: #666;
-            margin-top: 5px;
-        }
-
-        .annexes-section {
-            margin-top: 50px;
-        }
-
-        .annexes-title {
-            font-size: 20px;
-            font-weight: bold;
-            color: #2c5aa0;
-            text-align: center;
-            text-transform: uppercase;
-            margin: 40px 0;
-        }
-
-        .footer {
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 2px solid #2c5aa0;
-            text-align: center;
-            font-size: 10px;
-            color: #666;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin: 15px 0;
-        }
-
-        .info-grid-item {
-            padding: 10px;
-            background: #f8f9fa;
-            border-left: 3px solid #2c5aa0;
-            font-size: 12px;
-        }
-
-        .info-grid-label {
-            font-weight: bold;
-            color: #555;
-            margin-bottom: 5px;
-        }
-
-        .info-grid-value {
-            color: #2c5aa0;
-            font-weight: bold;
-        }
-
-        @media print {
-            body {
-                padding: 0;
-            }
-            
-            .no-print {
-                display: none;
-            }
-
-            .page-break {
-                page-break-after: always;
-            }
-        }
-
-        @media screen and (max-width: 768px) {
-            body {
-                padding: 20px;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    .assinatura {
+      margin-top: 26px;
+      padding-top: 10px;
+      border-top: 1px solid #d0d7e2;
+      text-align: left;
+      font-size: 10pt;
+      line-height: 1.5;
+    }
+  </style>
 </head>
 <body>
-    <!-- Página 1: Capa -->
-    <div class="header">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADSSURBVDhPY/wPBAx4wf9///4xAAGjEUMNMBrGMAzjf/D/////GRkZGf///w8E/xn+//v3jwEI/v37x/D//38GBgYGhv///zP8//+f4f///wz///9n+P//P8P///8Z/v//z/D//3+G///+M/z//5/h////DP/+/2f49+8/w79//xj+/fvH8O/fP4Z///4x/Pv3j+Hfv38M//79Y/j37x/Dv3//GP79+8fw798/hn///jH8+/eP4d+/fwz//v1j+PfvH8O/f/8Y/v37x/Dv3z+Gf//+Mfz7949hCAAAD3bAZ6s4A6YAAAAASUVORK5CYII=" alt="Igor Brazão Logo" class="logo">
-        <div class="header-text">PERÍCIA | CONSULTORIA | ADMINISTRAÇÃO JUDICIAL</div>
-        <div class="contact-info">www.igorbrazao.com.br | (21) 99326-2984</div>
+<div class="wrap">
+
+  <!-- Cabeçalho -->
+  <div class="header">
+    <img src="LOGO_URL_AQUI" alt="Logo" class="logo">
+    <div class="header-text">
+      <strong>Igor Brazão Perícias Econômico-Financeiras</strong><br>
+      Parecer Técnico Econômico-Financeiro<br>
+      ID do Diagnóstico: {{$json["diagnostico_id"]}}
     </div>
+  </div>
 
-    <div class="addressee">
-        <p class="addressee-title">Exmo. Sr. Dr Juiz de Direito</p>
-    </div>
+  <h1>Parecer Técnico Econômico-Financeiro</h1>
 
-    <div class="parties">
-        <p><strong>AUTOR:</strong> <span id="autor-nome">[NOME DO AUTOR]</span></p>
-        <p><strong>RÉU:</strong> <span id="reu-nome">[NOME DO RÉU - BANCO]</span></p>
-    </div>
+  <!-- Qualificação básica -->
+  <p>
+    Eu, <strong>Igor Brazão</strong>, Economista, inscrito no CORECON/RJ sob o nº ________,
+    atuante como Perito Judicial e Administrador Judicial no Tribunal de Justiça do Rio de Janeiro,
+    na qualidade de especialista em finanças corporativas e cálculos revisionais, apresento o presente
+    <strong>Parecer Técnico Econômico-Financeiro</strong>, a pedido de parte interessada, sobre o
+    contrato abaixo identificado.
+  </p>
 
-    <div class="document-title">
-        <h1 class="main-title">Parecer Técnico Econômico-Financeiro</h1>
-    </div>
+  <table class="meta-table">
+    <tr>
+      <td class="meta-label">Cliente:</td>
+      <td class="meta-value">{{$json["cliente"]["nome"]}}</td>
+    </tr>
+    <tr>
+      <td class="meta-label">CPF/CNPJ:</td>
+      <td class="meta-value">{{$json["cliente"]["cpf_cnpj"]}}</td>
+    </tr>
+    <tr>
+      <td class="meta-label">Instituição Financeira:</td>
+      <td class="meta-value">{{$json["contrato"]["banco"]}}</td>
+    </tr>
+    <tr>
+      <td class="meta-label">Número do Contrato:</td>
+      <td class="meta-value">{{$json["contrato"]["numero_contrato"]}}</td>
+    </tr>
+    <tr>
+      <td class="meta-label">Tipo de Operação:</td>
+      <td class="meta-value">{{$json["contrato"]["nome_segmento"]}}</td>
+    </tr>
+    <tr>
+      <td class="meta-label">Data de Contratação:</td>
+      <td class="meta-value">{{$json["contrato"]["data_contratacao"]}}</td>
+    </tr>
+    <tr>
+      <td class="meta-label">Data desta Análise:</td>
+      <td class="meta-value">{{$json["data_diagnostico"]}}</td>
+    </tr>
+  </table>
 
-    <div class="page-break"></div>
+  <!-- 1. Objeto -->
+  <h2>1. Objeto do Parecer</h2>
+  <p>
+    O presente parecer tem por objeto analisar, sob a ótica econômico-financeira, a
+    <strong>adequação das taxas de juros e encargos contratados</strong>, bem como estimar
+    o impacto financeiro decorrente de eventual cobrança de encargos superiores aos parâmetros
+    usualmente praticados pelo mercado e àqueles considerados razoáveis pela jurisprudência do
+    Superior Tribunal de Justiça (STJ), indicando eventuais valores pagos a maior e
+    o potencial de recuperação.
+  </p>
 
-    <!-- Página 2: Sumário -->
-    <div class="toc">
-        <div class="toc-title">Sumário</div>
-        <div class="toc-item">
-            <a href="#secao1">1. CARACTERÍSTICAS DO EXAME</a>
-        </div>
-        <div class="toc-item">
-            <a href="#secao2">2. DOCUMENTOS</a>
-        </div>
-        <div class="toc-item">
-            <a href="#secao3">3. DA METODOLOGIA ADOTADA</a>
-        </div>
-        <div class="toc-item">
-            <a href="#secao4">4. CONCLUSÃO</a>
-        </div>
-        <div class="toc-item">
-            <a href="#anexos">ANEXOS</a>
-        </div>
-    </div>
+  <!-- 2. Documentos e dados considerados -->
+  <h2>2. Documentos e Dados Considerados</h2>
+  <p>
+    Para elaboração deste parecer foram considerados, dentre outros:
+  </p>
+  <ul>
+    <li>Instrumento contratual fornecido pela parte (cópia do contrato e/ou extratos);</li>
+    <li>Histórico de pagamentos e quantidade de parcelas já quitadas;</li>
+    <li>Séries históricas de taxas de juros divulgadas pelo Banco Central do Brasil (BACEN);</li>
+    <li>Jurisprudência consolidada do STJ sobre revisão de contratos bancários;</li>
+    <li>Informações complementares prestadas pelo interessado.</li>
+  </ul>
 
-    <div class="page-break"></div>
+  <!-- 3. Metodologia -->
+  <h2>3. Metodologia Técnico-Econômica Aplicada</h2>
 
-    <!-- Seção 1: Características do Exame -->
-    <div class="section" id="secao1">
-        <h2 class="section-title">1. Características do Exame</h2>
-        <div class="section-content">
-            <p>Apuração de valores excessivamente onerosos cobrados pelo Banco Réu.</p>
-        </div>
-    </div>
+  <h3>3.1 Avaliação das taxas de juros</h3>
+  <p>
+    Inicialmente procedeu-se à identificação da <strong>taxa média de juros praticada pelo sistema
+    financeiro</strong> para a modalidade de crédito compatível com a operação analisada e para o
+    período de contratação, com base em séries oficiais do BACEN.
+  </p>
+  <p>
+    A taxa contratada foi comparada:
+  </p>
+  <ul>
+    <li>À <strong>taxa média de mercado</strong> para a modalidade e período;</li>
+    <li>Ao limite de <strong>1,5 (uma vez e meia) a taxa média</strong>, parâmetro de
+        razoabilidade consolidado no REsp 1.061.530/RS (STJ).</li>
+  </ul>
 
-    <!-- Seção 2: Documentos -->
-    <div class="section" id="secao2">
-        <h2 class="section-title">2. Documentos</h2>
-        <div class="section-content">
-            <p>O documento que formou a base deste parecer técnico foi:</p>
-            <p style="margin-left: 30px; margin-top: 10px;">a) Contrato de Financiamento de Veículos</p>
-        </div>
-    </div>
+  <h3>3.2 Simulações financeiras e fluxo de caixa</h3>
+  <p>
+    Foram elaboradas simulações do fluxo de caixa da operação, considerando:
+  </p>
+  <ul>
+    <li><strong>Cenário contratual:</strong> taxa de juros e encargos tal como pactuados no contrato;</li>
+    <li><strong>Cenário de referência:</strong> taxa limitada à média de mercado ou ao limite
+        de 1,5×, adotando-se o menor patamar entre ambos, mantendo-se demais condições constantes.</li>
+  </ul>
+  <p>
+    As simulações foram realizadas em sistema de amortização compatível com o contrato (Price/SAC),
+    levando em conta o número total de parcelas, valor financiado e datas de vencimento,
+    resultando nas tabelas anexas a este parecer.
+  </p>
 
-    <!-- Seção 3: Metodologia -->
-    <div class="section" id="secao3">
-        <h2 class="section-title">3. Da Metodologia Adotada</h2>
-        <div class="section-content">
-            <p>A metodologia adotada foi na direção de analisar uma excessiva onerosidade baseada na diferença entre a taxa de juros contratuais e a taxa de juros médios do respectivo contrato.</p>
-            
-            <p style="margin-top: 15px;">O contrato de financiamento de veículo possui os seguintes dados financeiros:</p>
-        </div>
+  <h3>3.3 Cálculo do Custo Efetivo Total (CET)</h3>
+  <p>
+    As tarifas de cadastro, IOF, seguro, gravame e demais encargos incidentes na contratação
+    foram agregadas ao valor liberado, de modo a estimar o <strong>Custo Efetivo Total (CET)</strong>,
+    que representa a taxa real da operação considerando encargos adicionais além dos juros
+    remuneratórios.
+  </p>
 
-        <div class="contract-data">
-            <table class="contract-table">
-                <thead>
-                    <tr>
-                        <th colspan="4">VALOR FINANCIADO (PRINCIPAL + ACESSÓRIOS + SERVIÇOS DE TERCEIROS FINANCIADOS A PEDIDO DO CLIENTE)</th>
-                        <th style="text-align: center;">% (%)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="label-col"><strong>B.1</strong> Valor do veículo à vista:</td>
-                        <td colspan="2"></td>
-                        <td class="value-col" id="valor-veiculo">85.000,00</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="label-col"><strong>B.2</strong> Acessórios - financiados:</td>
-                        <td>( ) Sim</td>
-                        <td>(X) Não</td>
-                        <td class="value-col">0,00</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="label-col"><strong>B.3</strong> IPVA - financiado:</td>
-                        <td>( ) Sim</td>
-                        <td>(X) Não</td>
-                        <td class="value-col">0,00</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="label-col"><strong>B.4</strong> Multas de trânsito - financiadas:</td>
-                        <td>( ) Sim</td>
-                        <td>(X) Não</td>
-                        <td class="value-col">0,00</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="label-col"><strong>B.5</strong> Licenciamento - financiado:</td>
-                        <td>( ) Sim</td>
-                        <td>(X) Não</td>
-                        <td class="value-col">0,00</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="label-col"><strong>B.6</strong> Discriminação do(s) seguro(s): Proteção Financeira<br>Seguradora: ITAUSEGUROS S/A</td>
-                        <td colspan="2">CNPJ: 61.557.039/0001-07</td>
-                        <td class="value-col" id="seguro-valor">3.864,72</td>
-                        <td class="value-col">5,20</td>
-                    </tr>
-                    <tr>
-                        <td class="label-col"><strong>B.7</strong> Despesas com despachante - financiadas:<br>Empresa:</td>
-                        <td colspan="2">CNPJ: ( ) Sim (X) Não</td>
-                        <td class="value-col">0,00</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="label-col"><strong>B.8</strong> Registro de Contrato - Cartório - financiado:</td>
-                        <td>( ) Sim</td>
-                        <td>(X) Não</td>
-                        <td class="value-col">0,00</td>
-                        <td>0,00</td>
-                    </tr>
-                    <tr>
-                        <td class="label-col"><strong>B.9</strong> Registro de Contrato/Órgão de Trânsito (CC art 1.361) -financiado:</td>
-                        <td>( ) Sim</td>
-                        <td>( ) Não</td>
-                        <td class="value-col" id="registro-valor">322,44</td>
-                        <td class="value-col">0,43</td>
-                    </tr>
-                    <tr style="background: #e9ecef;">
-                        <td class="label-col"><strong>B.10</strong> <strong>SUBTOTAL: VEÍCULO + ACESSÓRIOS + SERVIÇOS DE TERCEIROS FINANCIADOS A PEDIDO DO CLIENTE</strong></td>
-                        <td colspan="2"></td>
-                        <td class="value-col"><strong id="subtotal-valor">89.187,16</strong></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
+  <!-- 4. Análise técnico-numérica -->
+  <h2>4. Análise Técnico-Numérica</h2>
 
-            <table class="contract-table" style="margin-top: 20px;">
-                <thead>
-                    <tr>
-                        <th colspan="3">C - PAGAMENTO INICIAL / ENTRADA</th>
-                        <th style="text-align: center;"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="label-col"><strong>C.1</strong> Valor da entrada:</td>
-                        <td colspan="2"></td>
-                        <td class="value-col" id="entrada-valor">18.000,00</td>
-                    </tr>
-                    <tr>
-                        <td class="label-col"><strong>C.2</strong> Valor líquido liberado (B.10-B.2-B.3-B.4-B.5-B.7-C.1):</td>
-                        <td colspan="2"></td>
-                        <td class="value-col" id="liquido-liberado">67.000,00</td>
-                    </tr>
-                </tbody>
-            </table>
+  <h3>4.1 Comparativo de taxas</h3>
+  <table class="data">
+    <tr>
+      <th>Indicador</th>
+      <th>Valor</th>
+    </tr>
+    <tr>
+      <td class="label">Taxa de juros contratada (ao mês)</td>
+      <td>{{$json["taxas"]["contratada_mensal"]}}</td>
+    </tr>
+    <tr>
+      <td class="label">Taxa média de mercado BACEN (ao mês)</td>
+      <td>{{$json["taxas"]["mercado_mensal"]}}</td>
+    </tr>
+    <tr>
+      <td class="label">Limite STJ (1,5 × taxa média)</td>
+      <td>{{$json["taxas"]["limite_stj"]}}</td>
+    </tr>
+    <tr>
+      <td class="label">CET estimado da operação (ao mês)</td>
+      <td>{{$json["taxas"]["cet_mensal"]}}</td>
+    </tr>
+    <tr>
+      <td class="label">% acima da taxa média de mercado</td>
+      <td>{{$json["taxas"]["percentual_acima_mercado"]}}</td>
+    </tr>
+    <tr>
+      <td class="label">% acima do limite STJ</td>
+      <td>{{$json["taxas"]["percentual_acima_stj"]}}</td>
+    </tr>
+  </table>
 
-            <table class="contract-table" style="margin-top: 20px;">
-                <thead>
-                    <tr>
-                        <th colspan="4">D - TARIFAS (conforme Resolução CMN 3.919/2010)</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="label-col"><strong>D.1</strong> Opção pela contratação da Tarifa de Cadastro - financiada:</td>
-                        <td>( ) Sim</td>
-                        <td>(X) Não</td>
-                        <td class="value-col">0,00</td>
-                        <td class="value-col">0,00</td>
-                    </tr>
-                    <tr>
-                        <td class="label-col"><strong>D.2</strong> Opção pela contratação da Tarifa de Avaliação de Bens - financiada:</td>
-                        <td>(X) Sim</td>
-                        <td>( ) Não</td>
-                        <td class="value-col" id="tarifa-avaliacao">709,00</td>
-                        <td class="value-col">0,95</td>
-                    </tr>
-                    <tr>
-                        <td class="label-col"><strong>D.3</strong> Total de tarifas a serem financiadas:</td>
-                        <td colspan="2"></td>
-                        <td class="value-col" id="total-tarifas">709,00</td>
-                        <td class="value-col">0,95</td>
-                    </tr>
-                </tbody>
-            </table>
+  <p>
+    Verifica-se que a taxa contratada e o CET estimado situam-se em patamar
+    <span class="highlight-bad">superior</span> aos indicadores de referência, tanto de mercado
+    quanto jurisprudenciais, indicando provável onerosidade excessiva.
+  </p>
 
-            <table class="contract-table" style="margin-top: 20px;">
-                <thead>
-                    <tr>
-                        <th colspan="4">E - IOF - IMPOSTOS INCIDENTES SOBRE A OPERAÇÃO</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="label-col"><strong>E.1</strong> Valor total a ser financiado sem impostos (B.10 – C.1 + D.3):</td>
-                        <td colspan="2"></td>
-                        <td class="value-col" id="total-sem-iof">71.896,16</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="label-col"><strong>E.2</strong> IOF - alíquota - financiado:</td>
-                        <td>(X) Sim</td>
-                        <td>( ) Não</td>
-                        <td class="value-col">3,00 a.a.</td>
-                        <td class="value-col">2,84</td>
-                    </tr>
-                    <tr>
-                        <td class="label-col"><strong>E.3</strong> IOF - adicional(Decreto 6.339/08)- financiado:</td>
-                        <td>(X) Sim</td>
-                        <td>( ) Não</td>
-                        <td class="value-col">0,38 por dia</td>
-                        <td class="value-col">0,37</td>
-                    </tr>
-                    <tr>
-                        <td class="label-col"><strong>E.4</strong> Total de impostos a serem financiados:</td>
-                        <td colspan="2"></td>
-                        <td class="value-col" id="total-iof">2.382,82</td>
-                        <td class="value-col">3,21</td>
-                    </tr>
-                </tbody>
-            </table>
+  <h3>4.2 Impacto financeiro – parcelas e valores pagos</h3>
+  <table class="data">
+    <tr>
+      <th>Descrição</th>
+      <th>Valor</th>
+    </tr>
+    <tr>
+      <td class="label">Parcela contratual atual</td>
+      <td>{{$json["financeiro"]["parcela_atual"]}}</td>
+    </tr>
+    <tr>
+      <td class="label">Parcela justa estimada</td>
+      <td class="highlight-good">{{$json["financeiro"]["parcela_justa"]}}</td>
+    </tr>
+    <tr>
+      <td class="label">Diferença mensal em desfavor do consumidor</td>
+      <td class="highlight-bad">{{$json["financeiro"]["economia_mensal"]}}</td>
+    </tr>
+    <tr>
+      <td class="label">Valor total que deveria ter sido pago</td>
+      <td>{{$json["financeiro"]["deveria_ter_pago"]}}</td>
+    </tr>
+    <tr>
+      <td class="label">Valor efetivamente pago</td>
+      <td>{{$json["financeiro"]["total_pago"]}}</td>
+    </tr>
+    <tr>
+      <td class="label">Valor estimado pago a maior</td>
+      <td class="highlight-bad">{{$json["financeiro"]["pagou_a_mais"]}}</td>
+    </tr>
+    <tr>
+      <td class="label">Economia potencial futura (parcelas vincendas)</td>
+      <td>{{$json["financeiro"]["economia_futura"]}}</td>
+    </tr>
+    <tr>
+      <td class="label">Valor total potencialmente recuperável</td>
+      <td class="highlight-number">{{$json["financeiro"]["economia_total"]}}</td>
+    </tr>
+  </table>
 
-            <table class="contract-table" style="margin-top: 20px;">
-                <thead>
-                    <tr>
-                        <th colspan="3">F - DADOS DO FINANCIAMENTO</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="label-col"><strong>F.1</strong> Data do 1º Vencimento:</td>
-                        <td colspan="2"></td>
-                        <td class="value-col" id="data-vencimento">12/03/2025</td>
-                    </tr>
-                    <tr>
-                        <td class="label-col"><strong>F.2</strong> Número de parcelas mensais:</td>
-                        <td colspan="2"></td>
-                        <td class="value-col" id="num-parcelas">48</td>
-                    </tr>
-                    <tr>
-                        <td class="label-col"><strong>F.3</strong> Valor total das parcelas intermediárias (quando houver):</td>
-                        <td colspan="2"></td>
-                        <td class="value-col">0,00</td>
-                    </tr>
-                    <tr>
-                        <td class="label-col"><strong>F.4</strong> Taxa de juros diária, mensal e anual:</td>
-                        <td>% a.d.<br>0,1044</td>
-                        <td>% a.m.<br>3,18</td>
-                        <td class="value-col">% a.a.<br><span id="taxa-anual">45,99</span></td>
-                    </tr>
-                    <tr>
-                        <td class="label-col"><strong>F.5</strong> Valor de cada parcela mensal:</td>
-                        <td colspan="2"></td>
-                        <td class="value-col" id="valor-parcela-mensal">3.062,97</td>
-                    </tr>
-                    <tr style="background: #e9ecef;">
-                        <td class="label-col"><strong>F.6</strong> <strong>VALOR TOTAL FINANCIADO (COM IMPOSTOS) (E.1 + E.4)</strong></td>
-                        <td colspan="2"></td>
-                        <td class="value-col"><strong id="total-financiado">74.278,98</strong></td>
-                    </tr>
-                    <tr style="background: #fffbcc;">
-                        <td class="label-col"><strong>F.7</strong> <strong>VALOR TOTAL PAGO AO FINAL (F5 x F2) + C.1</strong></td>
-                        <td colspan="2"></td>
-                        <td class="value-col"><strong id="total-pago-final">165.022,56</strong></td>
-                    </tr>
-                </tbody>
-            </table>
+  <!-- 5. Fundamentação jurídico-econômica -->
+  <h2>5. Fundamentação Técnico-Jurídica (Síntese)</h2>
+  <p>
+    A análise pericial foi conduzida em consonância com os seguintes fundamentos:
+  </p>
+  <ul class="small">
+    <li><strong>Código de Defesa do Consumidor (Lei 8.078/90)</strong>, em especial:
+      art. 6º, inc. V (revisão de cláusulas que estabeleçam prestações desproporcionais) e
+      art. 51, §1º, III (vantagem manifestamente excessiva).</li>
+    <li><strong>Súmula 297 do STJ</strong> – aplicabilidade do CDC às instituições financeiras.</li>
+    <li><strong>REsp 1.061.530/RS (STJ)</strong> – adoção da taxa média de mercado divulgada pelo BACEN,
+        com limite de até 1,5 vez essa média, como parâmetro de razoabilidade para juros remuneratórios.</li>
+    <li>Princípios da boa-fé objetiva, equilíbrio contratual e função social do contrato.</li>
+  </ul>
 
-            <table class="contract-table" style="margin-top: 20px;">
-                <thead>
-                    <tr>
-                        <th colspan="3">H - CET-CUSTO EFETIVO TOTAL DA OPERAÇÃO (FÓRMULA DA RES. CMN 4.881/20)</th>
-                        <th style="text-align: center;">CET % a.d.<br>0,1234</th>
-                        <th style="text-align: center;">CET % a.m.<br>3,77</th>
-                        <th style="text-align: center;">CET % a.a.<br>55,68</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
+  <!-- 6. Conclusão -->
+  <h2>6. Conclusão Pericial</h2>
+  <p>
+    À luz dos elementos técnico-econômicos e jurídicos expostos, conclui-se que o contrato em análise
+    apresenta <strong>{{$json["resumo"]["classificacao"]}}</strong>, com taxa efetiva de juros
+    situada acima da média de mercado e do limite de 1,5× fixado pela jurisprudência do STJ,
+    bem como com valores já pagos em montante superior ao considerado economicamente adequado.
+  </p>
+  <p>
+    As simulações anexas evidenciam que:
+  </p>
+  <ul>
+    <li>a parcela mensal cobrada supera a parcela justa estimada em aproximadamente
+        <strong>{{$json["financeiro"]["economia_mensal"]}}</strong>;</li>
+    <li>até a data da análise, o contratante já teria desembolsado, de forma estimada,
+        <strong>{{$json["financeiro"]["pagou_a_mais"]}}</strong> além do valor considerado adequado;</li>
+    <li>o potencial de recuperação, somando valores já pagos e diferenças futuras, alcança cerca de
+        <strong>{{$json["financeiro"]["economia_total"]}}</strong>, sujeito à apreciação judicial.</li>
+  </ul>
 
-        <div class="section-content" style="margin-top: 20px;">
-            <p>Há cobranças de seguro, registro e tarifa de contratação, além do IOF sobre a operação financeira.</p>
-            
-            <p style="margin-top: 15px;">Os juros contratuais correspondem a <span class="highlight-value"><span id="juros-mensais">3,18</span>% ao mês</span>, com o custo efetivo total da operação chegando a <span class="highlight-value"><span id="cet-mensal">3,78</span>%</span>.</p>
-            
-            <p style="margin-top: 15px;">Os juros médios de mercado para operação de financiamento de veículos em <span id="mes-referencia">fevereiro de 2025</span> correspondia a <span class="success-value"><span id="juros-mercado">2,15</span>% ao mês</span>.</p>
-        </div>
-    </div>
+  <p>
+    Em razão do exposto, <strong>opina este Perito</strong> pela viabilidade técnico-econômica
+    de revisão do contrato, com:
+  </p>
+  <ul>
+    <li>readequação das taxas de juros ao patamar de mercado/jurisprudencialmente aceito;</li>
+    <li>recalculo das parcelas e do saldo devedor;</li>
+    <li>apuração e restituição dos valores cobrados a maior, na forma simples ou em dobro, a critério
+        do Juízo e conforme o conjunto probatório.</li>
+  </ul>
 
-    <div class="page-break"></div>
+  <p class="small">
+    Ressalta-se que os valores aqui apresentados possuem natureza estimativa, podendo sofrer ajustes
+    a partir de novos documentos, perícia judicial complementar ou critérios fixados pelo Juízo.
+  </p>
 
-    <!-- Seção 4: Conclusão -->
-    <div class="section" id="secao4">
-        <h2 class="section-title">4. Conclusão</h2>
-        
-        <div class="section-content">
-            <p>O objetivo deste parecer técnico foi demonstrar a excessiva onerosidade contratual encontrada dentro do financiamento de veículo contratado pelo autor.</p>
-            
-            <p style="margin-top: 15px;">Ficou evidente a excessiva onerosidade na evolução da dívida, quando consideradas as diferenças entre os juros contratuais com os juros médios de mercado.</p>
-            
-            <p style="margin-top: 15px;">Ainda, fica nítida a cobrança de seguro, tarifa e registro, elevando o valor financiado pelo autor, incrementando o valor da prestação abusivamente.</p>
-            
-            <p style="margin-top: 15px;">Quando recalculado o contrato considerando a base legal, as prestações pagas pelo autor sofrem um desconto próximo de 20% sobre aquilo que estava pagando.</p>
-            
-            <p style="margin-top: 15px;">Assim, se faz necessária a revisão do contrato, excluindo suas cobranças indevidas e utilizando os juros médios de mercado.</p>
-        </div>
+  <!-- 7. Anexos -->
+  <h2>7. Anexos</h2>
+  <p class="small">
+    Anexo I – Tabela de evolução da dívida (cenário contratual x cenário de referência).<br>
+    Anexo II – Demonstração do cálculo do CET e tarifas incidentes.<br>
+    Anexo III – Quadro-resumo dos valores pagos a maior e potencial de recuperação.<br>
+    Anexo IV – Cópias de séries BACEN e demais elementos de suporte, quando disponibilizados.
+  </p>
 
-        <div class="conclusion-box">
-            <div class="conclusion-title">Logo, concluo que:</div>
-            
-            <div class="conclusion-list">
-                <div class="conclusion-item">
-                    <span class="conclusion-item-number">1)</span>
-                    <strong>Existe excessiva onerosidade contratual no financiamento de veículo.</strong>
-                </div>
+  <!-- Assinatura -->
+  <div class="assinatura">
+    <p>Rio de Janeiro, {{new Date().toLocaleDateString("pt-BR")}}.</p>
+    <br><br>
+    <p><strong>__________________________________________</strong></p>
+    <p><strong>Igor Brazão</strong><br>
+       Economista – CORECON/RJ nº ________<br>
+       Perito Judicial e Administrador Judicial</p>
+  </div>
 
-                <div class="conclusion-item">
-                    <span class="conclusion-item-number">2)</span>
-                    Houve cobrança de seguro, tarifa e registro, embutidos no valor financiado, de <strong class="warning-value">R$<span id="conclusao-acessorios">4.896,16</span></strong>.
-                </div>
-
-                <div class="conclusion-item">
-                    <span class="conclusion-item-number">3)</span>
-                    O valor das <strong><span id="parcelas-restantes">45</span> prestações restantes</strong>, com base nos juros médios de mercado a <span class="success-value"><span id="conclusao-taxa-mercado">2,15</span>% ao mês</span>, assim como exclusão das cobranças abusivas em forma de acessórios, pelo banco réu, correspondem a <strong class="success-value">R$<span id="conclusao-valor-parcela">2.264,39</span></strong> (dois mil duzentos e sessenta e quatro reais e trinta e nove centavos).
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Assinatura -->
-    <div class="signature-section">
-        <p class="signature-date">Nada mais havendo a consignar, encerro o presente parecer aos <span id="dia-assinatura">seis</span> dias do mês de <span id="mes-assinatura">maio</span> do ano de <span id="ano-assinatura">dois mil e vinte e cinco</span>.</p>
-        
-        <div class="signature-line"></div>
-        <p class="signature-name">Igor Leal Brazão</p>
-        <p class="signature-title">ECONOMISTA PERITO – Corecon/RJ-25013</p>
-    </div>
-
-    <div class="page-break"></div>
-
-    <!-- Anexos -->
-    <div class="annexes-section" id="anexos">
-        <h2 class="annexes-title">Anexos</h2>
-
-        <div class="section">
-            <h3 class="subsection-title">TABELA DE INFORMAÇÃO DE DADOS</h3>
-            
-            <div class="info-grid">
-                <div class="info-grid-item">
-                    <div class="info-grid-label">Contrato</div>
-                    <div class="info-grid-value">1</div>
-                </div>
-                <div class="info-grid-item">
-                    <div class="info-grid-label">Data Cálculo</div>
-                    <div class="info-grid-value" id="data-calculo">6/5/2025</div>
-                </div>
-                <div class="info-grid-item">
-                    <div class="info-grid-label">Valor</div>
-                    <div class="info-grid-value">R$ <span id="anexo-valor">67.382,82</span></div>
-                </div>
-                <div class="info-grid-item">
-                    <div class="info-grid-label">TAC + Registro</div>
-                    <div class="info-grid-value">R$ <span id="anexo-tac">1.031,44</span></div>
-                </div>
-                <div class="info-grid-item">
-                    <div class="info-grid-label">Taxa de Juros Contratual</div>
-                    <div class="info-grid-value"><span id="anexo-taxa-contratual">3,18</span>%</div>
-                </div>
-                <div class="info-grid-item">
-                    <div class="info-grid-label">Seguro</div>
-                    <div class="info-grid-value">R$ <span id="anexo-seguro">3.864,72</span></div>
-                </div>
-                <div class="info-grid-item">
-                    <div class="info-grid-label">Prazo/mês</div>
-                    <div class="info-grid-value"><span id="anexo-prazo">48</span></div>
-                </div>
-                <div class="info-grid-item">
-                    <div class="info-grid-label">IOF</div>
-                    <div class="info-grid-value"><span id="anexo-iof">2.382,82</span></div>
-                </div>
-                <div class="info-grid-item">
-                    <div class="info-grid-label">Prestação</div>
-                    <div class="info-grid-value">R$ <span id="anexo-prestacao">2.756,13</span></div>
-                </div>
-                <div class="info-grid-item">
-                    <div class="info-grid-label">Prestação Paga</div>
-                    <div class="info-grid-value">R$ <span id="anexo-prestacao-paga">3.062,97</span></div>
-                </div>
-                <div class="info-grid-item">
-                    <div class="info-grid-label">Data 1ª Parcela</div>
-                    <div class="info-grid-value" id="anexo-data-primeira">12/3/2025</div>
-                </div>
-                <div class="info-grid-item">
-                    <div class="info-grid-label">Juros Cobrados/CET</div>
-                    <div class="info-grid-value"><span id="anexo-cet">3,78</span>%</div>
-                </div>
-                <div class="info-grid-item">
-                    <div class="info-grid-label">Data última Prestação</div>
-                    <div class="info-grid-value" id="anexo-data-ultima">12/2/2029</div>
-                </div>
-                <div class="info-grid-item">
-                    <div class="info-grid-label">Prestação Juros Médios</div>
-                    <div class="info-grid-value">R$ <span id="anexo-prestacao-media">2.264,39</span></div>
-                </div>
-                <div class="info-grid-item">
-                    <div class="info-grid-label">Prestações Pagas</div>
-                    <div class="info-grid-value"><span id="anexo-prestacoes-pagas">3</span></div>
-                </div>
-                <div class="info-grid-item">
-                    <div class="info-grid-label">Taxa Juros Médios</div>
-                    <div class="info-grid-value"><span id="anexo-taxa-media">2,15</span>%</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="section" style="margin-top: 40px;">
-            <h3 class="subsection-title">SIMULAÇÃO CONTRATO COM JUROS CONTRATUAIS</h3>
-            
-            <table class="amortization-table">
-                <thead>
-                    <tr>
-                        <th>DATA</th>
-                        <th>PRESTAÇÃO</th>
-                        <th>JUROS</th>
-                        <th>AMORTIZAÇÃO</th>
-                        <th>SALDO DEVEDOR</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td colspan="4" style="text-align: right;"><strong>Saldo Inicial:</strong></td>
-                        <td><strong>R$ <span id="saldo-inicial">67.382,82</span></strong></td>
-                    </tr>
-                    <!-- Aqui entrariam as linhas da tabela de amortização -->
-                    <!-- Por brevidade, mostro apenas algumas linhas de exemplo -->
-                    <tr>
-                        <td>12/3/2025</td>
-                        <td>R$ 2.756,13</td>
-                        <td>R$ 2.142,77</td>
-                        <td>R$ 613,36</td>
-                        <td>R$ 66.769,46</td>
-                    </tr>
-                    <tr>
-                        <td>12/4/2025</td>
-                        <td>R$ 2.756,13</td>
-                        <td>R$ 2.123,27</td>
-                        <td>R$ 632,86</td>
-                        <td>R$ 66.136,60</td>
-                    </tr>
-                    <tr>
-                        <td>12/5/2025</td>
-                        <td>R$ 2.756,13</td>
-                        <td>R$ 2.103,14</td>
-                        <td>R$ 652,99</td>
-                        <td>R$ 65.483,61</td>
-                    </tr>
-                    <tr>
-                        <td colspan="5" style="text-align: center; font-style: italic; color: #666;">
-                            [Demais parcelas omitidas para brevidade do template]
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>12/2/2029</td>
-                        <td>R$ 2.756,13</td>
-                        <td>R$ 84,94</td>
-                        <td>R$ 2.671,19</td>
-                        <td>R$ 0,00</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="section" style="margin-top: 40px;">
-            <h3 class="subsection-title">SIMULAÇÃO UTILIZANDO JUROS MÉDIOS DE MERCADO</h3>
-            
-            <table class="amortization-table">
-                <thead>
-                    <tr>
-                        <th>DATA</th>
-                        <th>PRESTAÇÃO</th>
-                        <th>JUROS</th>
-                        <th>AMORTIZAÇÃO</th>
-                        <th>SALDO DEVEDOR</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td colspan="4" style="text-align: right;"><strong>Saldo Inicial:</strong></td>
-                        <td><strong>R$ <span id="saldo-inicial-medio">67.382,82</span></strong></td>
-                    </tr>
-                    <tr>
-                        <td>12/3/2025</td>
-                        <td>R$ 2.264,39</td>
-                        <td>R$ 1.448,73</td>
-                        <td>R$ 815,66</td>
-                        <td>R$ 66.567,16</td>
-                    </tr>
-                    <tr>
-                        <td>12/4/2025</td>
-                        <td>R$ 2.264,39</td>
-                        <td>R$ 1.431,19</td>
-                        <td>R$ 833,20</td>
-                        <td>R$ 65.733,96</td>
-                    </tr>
-                    <tr>
-                        <td>12/5/2025</td>
-                        <td>R$ 2.264,39</td>
-                        <td>R$ 1.413,28</td>
-                        <td>R$ 851,11</td>
-                        <td>R$ 64.882,85</td>
-                    </tr>
-                    <tr>
-                        <td colspan="5" style="text-align: center; font-style: italic; color: #666;">
-                            [Demais parcelas omitidas para brevidade do template]
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>12/2/2029</td>
-                        <td>R$ 2.264,39</td>
-                        <td>R$ 47,66</td>
-                        <td>R$ 2.216,73</td>
-                        <td>R$ 0,00</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="section" style="margin-top: 40px;">
-            <h3 class="subsection-title">DIFERENÇAS</h3>
-            
-            <table class="amortization-table">
-                <thead>
-                    <tr>
-                        <th>DATA</th>
-                        <th>PRESTAÇÃO<br>PAGA</th>
-                        <th>PRESTAÇÃO<br>DEVIDA</th>
-                        <th>DIFERENÇA</th>
-                        <th>ATUALIZAÇÃO</th>
-                        <th>JUROS</th>
-                        <th>TOTAL</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>12/3/2025</td>
-                        <td>R$ 3.062,97</td>
-                        <td>R$ 2.264,39</td>
-                        <td>R$ 798,58</td>
-                        <td>1</td>
-                        <td>1,83%</td>
-                        <td class="success-value">R$ 813,22</td>
-                    </tr>
-                    <tr>
-                        <td>12/4/2025</td>
-                        <td>R$ 3.062,97</td>
-                        <td>R$ 2.264,39</td>
-                        <td>R$ 798,58</td>
-                        <td>1</td>
-                        <td>0,80%</td>
-                        <td class="success-value">R$ 804,97</td>
-                    </tr>
-                    <tr>
-                        <td>12/5/2025</td>
-                        <td>R$ 3.062,97</td>
-                        <td>R$ 2.264,39</td>
-                        <td>R$ 798,58</td>
-                        <td>1</td>
-                        <td>0,00%</td>
-                        <td class="success-value">R$ 798,58</td>
-                    </tr>
-                    <tr class="total-row">
-                        <td colspan="6" style="text-align: right;"><strong>TOTAL:</strong></td>
-                        <td><strong class="success-value">R$ <span id="total-diferencas">2.416,76</span></strong></td>
-                    </tr>
-                    <tr class="total-row">
-                        <td colspan="6" style="text-align: right;"><strong>Saldo Devedor:</strong></td>
-                        <td><strong>R$ <span id="saldo-devedor-final">64.882,85</span></strong></td>
-                    </tr>
-                    <tr class="total-row">
-                        <td colspan="6" style="text-align: right;"><strong>Saldo Devedor - Diferenças:</strong></td>
-                        <td><strong class="success-value">R$ <span id="saldo-menos-diferencas">62.466,09</span></strong></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Rodapé -->
-    <div class="footer">
-        <p><strong>Igor Brazão - PERÍCIAS</strong></p>
-        <p>PERÍCIA | CONSULTORIA | ADMINISTRAÇÃO JUDICIAL</p>
-        <p>www.igorbrazao.com.br | (21) 99326-2984</p>
-    </div>
-
-    <!-- Script para preenchimento dinâmico (opcional) -->
-    <script>
-        // Exemplo de como preencher os campos dinamicamente
-        // Este script pode ser removido se você for preencher via backend
-        
-        /*
-        // Função para formatar número como moeda brasileira
-        function formatarMoeda(valor) {
-            return new Intl.NumberFormat('pt-BR', {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            }).format(valor);
-        }
-
-        // Exemplo de preenchimento
-        const dados = {
-            autorNome: 'VITOR DO NASCIMENTO FIGUEIREDO',
-            reuNome: 'BANCO ITAUCARD',
-            valorVeiculo: 85000.00,
-            // ... outros dados
-        };
-
-        document.getElementById('autor-nome').textContent = dados.autorNome;
-        document.getElementById('reu-nome').textContent = dados.reuNome;
-        document.getElementById('valor-veiculo').textContent = formatarMoeda(dados.valorVeiculo);
-        // ... e assim por diante
-        */
-    </script>
+</div>
 </body>
 </html>
