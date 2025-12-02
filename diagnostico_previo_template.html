@@ -1,368 +1,140 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <title>Relatório Técnico de Diagnóstico Econômico-Financeiro</title>
+  <meta charset="UTF-8">
+  <title>Diagnóstico Preliminar</title>
   <style>
-    @page {
-      size: A4;
-      margin: 20mm 18mm 22mm 18mm;
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; margin: 0; padding: 20px; }
+    
+    /* Cabeçalho com Logo */
+    .header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 15px; margin-bottom: 20px; }
+    .header img { max-height: 85px; margin-bottom: 10px; display: block; margin-left: auto; margin-right: auto; }
+    .header h1 { margin: 0; font-size: 24px; text-transform: uppercase; color: #000; letter-spacing: 1px; }
+    .header p { margin: 5px 0 0; color: #666; font-size: 13px; }
+    
+    .section { margin-bottom: 25px; }
+    .section h2 { font-size: 16px; border-left: 4px solid #000; padding-left: 10px; margin-bottom: 10px; background: #f4f4f4; padding: 8px; }
+    
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 14px; }
+    .label { font-weight: bold; color: #555; }
+    
+    .resultado-box { 
+      padding: 20px; 
+      border-radius: 8px; 
+      text-align: center; 
+      margin: 20px 0;
+      border: 1px solid #ccc;
+    }
+    .res-titulo { font-size: 18px; font-weight: bold; margin-bottom: 10px; }
+    .res-valores { font-size: 22px; margin: 15px 0; }
+    
+    .oneroso { background-color: #fff5f5; border-color: #fc8181; color: #c53030; }
+    .regular { background-color: #f0fff4; border-color: #68d391; color: #2f855a; }
+
+    .persuasao {
+      background-color: #fffbea;
+      border-left: 4px solid #ecc94b;
+      padding: 15px;
+      font-size: 13px;
+      line-height: 1.5;
+      text-align: justify;
+      margin-top: 10px;
     }
 
-    body {
-      font-family: "Open Sans", Arial, Helvetica, sans-serif;
-      color: #111111;
-      font-size: 11pt;
-      line-height: 1.6;
-    }
+    /* Tabela de Tarifas */
+    .tbl-tarifas { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 10px; }
+    .tbl-tarifas th, .tbl-tarifas td { border: 1px solid #ddd; padding: 6px; }
+    .tbl-tarifas th { background: #eee; text-align: left; }
+    .text-right { text-align: right; }
 
-    h1, h2, h3, h4 {
-      font-family: "Merriweather", "Times New Roman", serif;
-      margin: 0 0 6px;
-      font-weight: 700;
-      color: #113f73;
-    }
-
-    h1 { font-size: 18pt; text-transform: uppercase; letter-spacing: .4px; text-align: center; }
-    h2 { font-size: 13.5pt; margin-top: 14px; border-bottom: 1px solid #d0d7e2; padding-bottom: 3px; }
-    h3 { font-size: 12pt; margin-top: 10px; }
-    h4 { font-size: 11pt; margin-top: 8px; }
-
-    p  { margin: 4px 0 6px; text-align: justify; }
-
-    .wrap   { width: 100%; }
-    .header { border-bottom: 2px solid #d0d7e2; padding-bottom: 10px; margin-bottom: 14px; display: flex; align-items: center; }
-    .logo   { width: 70px; height: auto; margin-right: 14px; }
-    .header-text { font-size: 10pt; color: #555; }
-
-    .box-summary {
-      border-radius: 6px;
-      padding: 10px 12px;
-      margin: 10px 0 14px;
-      background: #f4fbf7;
-      border: 1px solid #c5e3ce;
-    }
-
-    .box-summary strong {
-      color: #155724;
-    }
-
-    .badge-status {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 9pt;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .5px;
-      color: #ffffff;
-      background: #1b8c3e;
-      margin-bottom: 6px;
-    }
-
-    .meta-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 6px 0 12px;
-      font-size: 10pt;
-    }
-
-    .meta-table td {
-      padding: 3px 4px;
-    }
-
-    .meta-label {
-      width: 26%;
-      color: #555;
-      font-weight: 600;
-    }
-
-    .meta-value {
-      color: #111;
-    }
-
-    table.data {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 8px 0 12px;
-      font-size: 10pt;
-    }
-
-    table.data th,
-    table.data td {
-      border: 1px solid #d4dde8;
-      padding: 5px 6px;
-      text-align: right;
-    }
-
-    table.data th {
-      text-align: center;
-      background: #f0f3f9;
-      font-weight: 700;
-      color: #1c3250;
-    }
-
-    table.data td.label {
-      text-align: left;
-      font-weight: 600;
-      color: #333;
-      background: #fafbfe;
-    }
-
-    .highlight-number {
-      font-weight: 700;
-      color: #174f93;
-    }
-
-    .highlight-bad {
-      font-weight: 700;
-      color: #b02a2a;
-    }
-
-    .highlight-good {
-      font-weight: 700;
-      color: #137b3a;
-    }
-
-    .small {
-      font-size: 9pt;
-      color: #555;
-    }
-
-    .footer {
-      margin-top: 14px;
-      padding-top: 8px;
-      border-top: 1px solid #d0d7e2;
-      font-size: 9pt;
-      color: #555;
-      text-align: center;
-    }
+    .footer { font-size: 10px; text-align: center; margin-top: 40px; color: #999; border-top: 1px solid #eee; padding-top: 10px; }
   </style>
 </head>
 <body>
-<div class="wrap">
 
-  <!-- Cabeçalho -->
   <div class="header">
-    <img src="LOGO_URL_AQUI" alt="Logo" class="logo">
-    <div class="header-text">
-      <strong>Igor Brazão Perícias Econômico-Financeiras</strong><br>
-      Relatório Técnico de Diagnóstico Econômico-Financeiro<br>
-      ID do Diagnóstico: {{$json["diagnostico_id"]}}
+    <img src="https://igorbrazao.com.br/wp-content/uploads/2025/02/imagem_gerada-23.png" alt="Igor Brazão Perícias">
+    <h1>Igor Brazão Perícias</h1>
+    <p>Perícias Econômico-Financeiras | Assistência Técnica Judicial</p>
+    <p><strong>Diagnóstico Preliminar de Contrato Bancário</strong></p>
+  </div>
+
+  <div class="section">
+    <h2>1. Dados do Contrato Analisado</h2>
+    <div class="grid">
+      <div><span class="label">Cliente:</span> {{cliente.nome}}</div>
+      <div><span class="label">Instituição:</span> {{contrato.banco}}</div>
+      <div><span class="label">Contrato Nº:</span> {{contrato.numero_contrato}}</div>
+      <div><span class="label">Valor Financiado:</span> R$ {{contrato.valor_contratado}}</div>
+      <div><span class="label">Parcela Atual:</span> R$ {{contrato.valor_parcela}}</div>
+      <div><span class="label">Prazo:</span> {{contrato.quantidade_parcelas}} meses</div>
     </div>
   </div>
 
-  <!-- Título -->
-  <h1>Relatório Técnico de Diagnóstico Econômico-Financeiro</h1>
+  {{#if diagnostico.tem_acessorios}}
+  <div class="section">
+    <h2>2. Análise de Tarifas e Acessórios (Venda Casada)</h2>
+    <p style="font-size: 12px; margin-bottom: 5px;">Identificamos a cobrança dos seguintes encargos embutidos no financiamento:</p>
+    <table class="tbl-tarifas">
+      <tr>
+        <th>Descrição da Tarifa</th>
+        <th class="text-right">Valor (R$)</th>
+      </tr>
+      {{#if diagnostico.tarifas.cadastro}}<tr><td>Tarifa de Cadastro</td><td class="text-right">{{diagnostico.tarifas.cadastro}}</td></tr>{{/if}}
+      {{#if diagnostico.tarifas.seguro}}<tr><td>Seguro Prestamista / Auto</td><td class="text-right">{{diagnostico.tarifas.seguro}}</td></tr>{{/if}}
+      {{#if diagnostico.tarifas.avaliacao}}<tr><td>Avaliação do Bem</td><td class="text-right">{{diagnostico.tarifas.avaliacao}}</td></tr>{{/if}}
+      {{#if diagnostico.tarifas.registro}}<tr><td>Registro / Gravame</td><td class="text-right">{{diagnostico.tarifas.registro}}</td></tr>{{/if}}
+      <tr style="background: #fafafa; font-weight: bold;">
+        <td class="text-right">TOTAL DE TARIFAS:</td>
+        <td class="text-right">R$ {{diagnostico.tarifas.total}}</td>
+      </tr>
+    </table>
+  </div>
+  {{/if}}
 
-  <!-- Dados básicos -->
-  <table class="meta-table">
-    <tr>
-      <td class="meta-label">Cliente:</td>
-      <td class="meta-value">{{$json["cliente"]["nome"]}}</td>
-    </tr>
-    <tr>
-      <td class="meta-label">CPF/CNPJ:</td>
-      <td class="meta-value">{{$json["cliente"]["cpf_cnpj"]}}</td>
-    </tr>
-    <tr>
-      <td class="meta-label">Instituição Financeira:</td>
-      <td class="meta-value">{{$json["contrato"]["banco"]}}</td>
-    </tr>
-    <tr>
-      <td class="meta-label">Tipo de Operação:</td>
-      <td class="meta-value">{{$json["contrato"]["nome_segmento"]}}</td>
-    </tr>
-    <tr>
-      <td class="meta-label">Data da Contratação:</td>
-      <td class="meta-value">{{$json["contrato"]["data_contratacao"]}}</td>
-    </tr>
-    <tr>
-      <td class="meta-label">Data desta Análise:</td>
-      <td class="meta-value">{{$json["data_diagnostico"]}}</td>
-    </tr>
-  </table>
-
-  <!-- Sumário executivo -->
-  <h2>1. Sumário Executivo</h2>
-
-  <div class="box-summary">
-    <div class="badge-status">{{$json["resumo"]["classificacao"]}}</div>
-    <p>
-      {{$json["resumo"]["mensagem"]}}
-    </p>
+  <div class="section">
+    <h2>{{#if diagnostico.tem_acessorios}}3{{else}}2{{/if}}. Análise dos Juros Remuneratórios</h2>
+    <table style="width: 100%; text-align: center; border-collapse: collapse;">
+      <tr style="background: #eee;">
+        <th style="padding: 8px;">Taxa Contratada</th>
+        <th style="padding: 8px;">Média de Mercado (BACEN)</th>
+      </tr>
+      <tr>
+        <td style="padding: 15px; font-size: 18px;">{{diagnostico.taxa_contratual_perc}}% a.m.</td>
+        <td style="padding: 15px; font-size: 18px;">{{diagnostico.taxa_bacen_perc}}% a.m.</td>
+      </tr>
+    </table>
   </div>
 
-  <p>
-    Em termos práticos, isso significa que a taxa de juros aplicada ao contrato é
-    <span class="highlight-bad">{{$json["taxas"]["percentual_acima_mercado"]}}</span> acima da média de
-    mercado apurada pelo Banco Central do Brasil (BACEN), e
-    <span class="highlight-bad">{{$json["taxas"]["percentual_acima_stj"]}}</span> acima do limite
-    de razoabilidade de 1,5 vezes essa taxa, estabelecido em
-    jurisprudência do Superior Tribunal de Justiça (STJ).
-  </p>
+  <div class="resultado-box {{#if diagnostico.tem_onerosidade}}oneroso{{else}}regular{{/if}}">
+    <div class="res-titulo">{{diagnostico.titulo_resultado}}</div>
+    
+    {{#if diagnostico.tem_onerosidade}}
+      <p>Estimativa de Parcela Justa (Recálculo):</p>
+      <div class="res-valores">R$ {{diagnostico.prestacao_mercado}}</div>
+      <p>Diferença Estimada por Parcela: R$ {{diagnostico.diferenca_mensal}}</p>
+      <p><strong>Potencial Recuperável (Total Estimado): R$ {{diagnostico.diferenca_total}}</strong></p>
+    {{else}}
+      <p>A taxa aplicada está em conformidade com a média de mercado para o período e modalidade.</p>
+    {{/if}}
+  </div>
 
-  <p>
-    Até o momento da análise, estimamos que foram pagos
-    <span class="highlight-bad">{{$json["impacto"]["pagou_a_mais_fmt"]}}</span> além do que seria
-    economicamente adequado, com potencial total de recuperação
-    de <span class="highlight-number">{{$json["impacto"]["total_recuperavel_fmt"]}}</span>, considerando
-    também as parcelas vincendas.
-  </p>
+  <div class="section">
+    <h2>Recomendação Técnica</h2>
+    <div class="persuasao">
+      <strong>Nota do Perito:</strong><br><br>
+      {{diagnostico.texto_persuasivo}}
+    </div>
+  </div>
 
-  <!-- Metodologia em linguagem simples -->
-  <h2>2. Metodologia Utilizada (Explicação Simplificada)</h2>
-
-  <h3>2.1 Comparação com a taxa média de mercado</h3>
-  <p>
-    O primeiro passo foi identificar a <strong>taxa média de juros praticada pelo sistema financeiro</strong>
-    para operações semelhantes à analisada, na mesma época da contratação, utilizando séries públicas
-    do Banco Central do Brasil (BACEN).
-  </p>
-  <p>
-    Em seguida, comparamos essa taxa média com a taxa efetivamente contratada e com o
-    <strong>limite de 1,5 vez a taxa média</strong>, parâmetro adotado pela jurisprudência do
-    STJ (REsp 1.061.530/RS) para identificar onerosidade excessiva.
-  </p>
-
-  <h3>2.2 Simulações financeiras</h3>
-  <p>
-    Foram realizadas duas simulações principais:
-  </p>
-  <ul>
-    <li>Contrato com a <strong>taxa de juros contratada</strong>;</li>
-    <li>Contrato com uma <strong>taxa considerada justa</strong>, limitada pela média BACEN e pelo parâmetro de 1,5× do STJ.</li>
-  </ul>
-  <p>
-    A diferença entre essas duas simulações permite estimar qual seria a
-    <strong>parcela mensal justa</strong>, bem como o total que deveria ter sido pago
-    até a data da análise.
-  </p>
-
-  <h3>2.3 Cálculo do Custo Efetivo Total (CET)</h3>
-  <p>
-    As tarifas incidentes na contratação (tarifa de cadastro, IOF, seguro e similares) foram somadas ao
-    valor financiado para estimar o <strong>Custo Efetivo Total (CET)</strong>, que representa a
-    taxa real da operação considerando não apenas os juros, mas também esses encargos adicionais.
-  </p>
-
-  <!-- Análise numérica -->
-  <h2>3. Análise das Taxas de Juros</h2>
-
-  <table class="data">
-    <tr>
-      <th>Indicador</th>
-      <th>Valor</th>
-    </tr>
-    <tr>
-      <td class="label">Taxa de juros contratada (ao mês)</td>
-      <td>{{$json["taxas"]["contratada_mensal"]}}</td>
-    </tr>
-    <tr>
-      <td class="label">Taxa média de mercado BACEN (ao mês)</td>
-      <td>{{$json["taxas"]["mercado_mensal"]}}</td>
-    </tr>
-    <tr>
-      <td class="label">Limite STJ (1,5 × taxa média)</td>
-      <td>{{$json["taxas"]["limite_stj"]}}</td>
-    </tr>
-    <tr>
-      <td class="label">CET estimado da operação (ao mês)</td>
-      <td>{{$json["taxas"]["cet_mensal"]}}</td>
-    </tr>
-    <tr>
-      <td class="label">% acima da taxa média de mercado</td>
-      <td>{{$json["taxas"]["percentual_acima_mercado"]}}</td>
-    </tr>
-    <tr>
-      <td class="label">% acima do limite STJ</td>
-      <td>{{$json["taxas"]["percentual_acima_stj"]}}</td>
-    </tr>
-  </table>
-
-  <p>
-    Observa-se que a taxa de juros contratada e o CET estimado se mantêm significativamente
-    acima tanto da taxa média de mercado quanto do limite jurisprudencialmente aceito,
-    reforçando os indícios de onerosidade excessiva.
-  </p>
-
-  <h2>4. Impacto Financeiro Estimado</h2>
-
-  <h3>4.1 Comparação das parcelas</h3>
-  <table class="data">
-    <tr>
-      <th>Descrição</th>
-      <th>Valor</th>
-    </tr>
-    <tr>
-      <td class="label">Parcela atual do contrato</td>
-      <td>{{$json["financeiro"]["parcela_atual"]}}</td>
-    </tr>
-    <tr>
-      <td class="label">Parcela justa estimada</td>
-      <td class="highlight-good">{{$json["financeiro"]["parcela_justa"]}}</td>
-    </tr>
-    <tr>
-      <td class="label">Diferença mensal em desfavor do consumidor</td>
-      <td class="highlight-bad">{{$json["financeiro"]["economia_mensal"]}}</td>
-    </tr>
-  </table>
-
-  <h3>4.2 Valores já pagos e potencial de recuperação</h3>
-  <table class="data">
-    <tr>
-      <th>Descrição</th>
-      <th>Valor</th>
-    </tr>
-    <tr>
-      <td class="label">Total que deveria ter sido pago até a data</td>
-      <td>{{$json["financeiro"]["deveria_ter_pago"]}}</td>
-    </tr>
-    <tr>
-      <td class="label">Total efetivamente pago</td>
-      <td>{{$json["financeiro"]["total_pago"]}}</td>
-    </tr>
-    <tr>
-      <td class="label">Valor estimado pago a maior</td>
-      <td class="highlight-bad">{{$json["financeiro"]["pagou_a_mais"]}}</td>
-    </tr>
-    <tr>
-      <td class="label">Economia potencial futura (parcelas vincendas)</td>
-      <td>{{$json["financeiro"]["economia_futura"]}}</td>
-    </tr>
-    <tr>
-      <td class="label">Valor total potencialmente recuperável</td>
-      <td class="highlight-number">{{$json["financeiro"]["economia_total"]}}</td>
-    </tr>
-  </table>
-
-  <h2>5. Conclusão do Diagnóstico</h2>
-  <p>
-    Com base nas simulações realizadas e na comparação com os parâmetros de mercado
-    e de jurisprudência, conclui-se que o contrato apresenta
-    <strong>{{$json["resumo"]["classificacao"]}}</strong>, com indicação de
-    cobrança de encargos superiores àqueles considerados razoáveis.
-  </p>
-  <p>
-    Este relatório possui caráter <strong>estritamente informativo</strong> e tem por objetivo
-    auxiliar o cliente e seu advogado na avaliação da conveniência de adoção de
-    medidas judiciais ou negociais. Não substitui o parecer técnico pericial
-    completo nem constitui recomendação jurídica.
-  </p>
-
-  <h2>6. Base Legal Utilizada (Síntese)</h2>
-  <p class="small">
-    • Código de Defesa do Consumidor (Lei 8.078/90), especialmente art. 6º, inc. V, e art. 51, §1º, III.<br>
-    • Súmula 297 do STJ – “O Código de Defesa do Consumidor é aplicável às instituições financeiras.”<br>
-    • REsp 1.061.530/RS (STJ) – parâmetro de razoabilidade de até 1,5 vez a taxa média de mercado divulgada pelo BACEN.
-  </p>
+  <div style="margin-top: 20px; font-size: 11px; color: #555; border-top: 1px dotted #999; padding-top: 10px; text-align: justify;">
+    <strong>Base Legal:</strong> Cálculos baseados na Taxa Média de Mercado (BACEN), conforme REsp 1.061.530/RS e Súmula 297 do STJ.
+  </div>
 
   <div class="footer">
-    Relatório Técnico de Diagnóstico Econômico-Financeiro – uso informativo<br>
-    Este documento não substitui consulta jurídica nem garante resultado em eventual demanda judicial.
+    Este documento é um diagnóstico preliminar automatizado.<br>
+    Para uso em processos judiciais, solicite o Parecer Técnico Completo.
   </div>
 
-</div>
 </body>
 </html>
-
