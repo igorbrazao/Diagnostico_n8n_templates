@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entenda o Seu Diagnóstico - Guia de Ação</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Estilos customizados para a tabela de diferenciação */
+        .diff-table th {
+            background-color: #eef2ff; /* Indigo-50 */
+            color: #374151; /* Gray-700 */
+            text-align: left;
+            padding: 12px;
+            font-size: 0.875rem; /* text-sm */
+            border-bottom: 2px solid #c7d2fe; /* Indigo-200 */
+        }
+        .diff-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e5e7eb; /* Gray-200 */
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen font-sans">
+
+    <div class="max-w-4xl mx-auto py-12 px-4">
+        
+        <header class="text-center mb-10 border-b pb-6 border-indigo-200">
+            <i data-lucide="scale" class="w-12 h-12 text-indigo-600 mx-auto mb-3"></i>
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
+                Entenda o Seu Diagnóstico Prévio
+            </h1>
+            <p class="text-lg text-gray-600">
+                Guia Rápido de Ação: O que significa seu resultado e qual o próximo passo?
+            </p>
+        </header>
+
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <i data-lucide="alert-triangle" class="w-6 h-6 text-indigo-600"></i>
+                1. O Alerta Inicial: O Risco do Seu Contrato
+            </h2>
+            <p class="text-gray-700 mb-6">
+                Seu Diagnóstico é uma ferramenta de triagem que confronta a taxa de juros do seu contrato com o limite de abusividade legal (1,5x a média do BACEN, critério do STJ).
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="p-5 bg-red-50 border-l-4 border-red-500 rounded-lg shadow-sm">
+                    <h3 class="font-bold text-red-800 text-lg mb-2 flex items-center gap-2">
+                        <i data-lucide="circle-dot" class="w-4 h-4 fill-red-500 text-red-500"></i>
+                        ALTA ONEROSIDADE (Risco Crítico)
+                    </h3>
+                    <p class="text-sm text-red-700">
+                        O contrato está **vulnerável**. A taxa aplicada é legalmente questionável.
+                    </p>
+                    <p class="text-sm font-semibold text-red-700 mt-2">
+                        Ação Principal: **Corrigir o valor indevido** (via processo ou acordo).
+                    </p>
+                </div>
+                
+                <div class="p-5 bg-green-50 border-l-4 border-green-500 rounded-lg shadow-sm">
+                    <h3 class="font-bold text-green-800 text-lg mb-2 flex items-center gap-2">
+                        <i data-lucide="check-circle" class="w-4 h-4 fill-green-500 text-green-500"></i>
+                        BAIXA ONEROSIDADE (Risco Normal)
+                    </h3>
+                    <p class="text-sm text-green-700">
+                        O contrato é considerado **regular** nos juros remuneratórios.
+                    </p>
+                    <p class="text-sm font-semibold text-green-700 mt-2">
+                        Ação Principal: **Liquidar a dívida com segurança** (via negociação ou execução).
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <i data-lucide="library" class="w-6 h-6 text-indigo-600"></i>
+                2. Parecer Técnico: O Documento Essencial para a Ação
+            </h2>
+            
+            <p class="text-gray-700 mb-6">
+                O **Diagnóstico** é o alerta. O **Parecer Técnico Pericial** é o documento que permite a ação. Sem ele, mesmo com o alerta, o valor da sua causa é incerto.
+            </p>
+
+            <table class="diff-table w-full border-collapse">
+                <thead>
+                    <tr>
+                        <th class="w-1/3">Função da Documentação</th>
+                        <th class="w-1/3">O que o Parecer Permite Fazer</th>
+                        <th class="w-1/3">Limitações do Uso dos Cálculos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>**Uso em Processo Judicial (Prova)**</td>
+                        <td>
+                            Fornece a **base técnica assinada** para:
+                            <ul class="list-disc ml-5 mt-1 text-sm text-gray-600">
+                                <li>Fundamentar a Petição Inicial / Contestação.</li>
+                                <li>Liquidar **Sentenças Simples** (onde a metodologia é definida).</li>
+                            </ul>
+                        </td>
+                        <td>
+                            **NÃO substitui a Perícia Judicial** determinada pelo Juiz em processos de alta complexidade. Serve como **Laudo de Assistente Técnico**.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>**Uso em Negociação/Liquidação**</td>
+                        <td>
+                            Define o **Valor Exato e Inquestionável** da causa (o *quantum*). Essencial para negociações extrajudiciais com o Banco ou para definir valores de cobrança.
+                        </td>
+                        <td>
+                            **NÃO garante o aceite do Banco.** A documentação força a negociação a partir de uma base técnica, mas o acordo depende da aceitação da outra parte.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <i data-lucide="trending-up" class="w-6 h-6 text-indigo-600"></i>
+                3. Tomada de Decisão: O Caminho para Cada Interesse
+            </h2>
+            
+            <div class="bg-red-50 p-6 rounded-xl border border-red-200 mb-8">
+                <h3 class="text-xl font-bold text-red-700 mb-3">Cenário A: Diagnóstico de ALTA ONEROSIDADE (Contrato Fraco)</h3>
+                <div class="grid md:grid-cols-2 gap-4 text-sm">
+                    <div class="p-3 border rounded-lg bg-white">
+                        <p class="font-bold text-gray-800 flex items-center gap-1"><i data-lucide="user-check" class="w-4 h-4 text-indigo-600"></i> Cliente / Advogado (Devedor)</p>
+                        <p class="mt-1 text-gray-700">
+                            **AÇÃO DE ATAQUE:** O Parecer define o valor que o cliente tem a **Restituir** ou o quanto a dívida será **Reduzida**. Essencial para Petição Inicial.
+                        </p>
+                    </div>
+                    <div class="p-3 border rounded-lg bg-white">
+                        <p class="font-bold text-gray-800 flex items-center gap-1"><i data-lucide="banknote" class="w-4 h-4 text-indigo-600"></i> Instituição Financeira / Advogado (Credor)</p>
+                        <p class="mt-1 text-gray-700">
+                            **AÇÃO DE MITIGAÇÃO DE RISCO:** O Parecer dimensiona o **Teto de Perda Judicial**. Permite ao Banco a **ação proativa** de negociar um acordo vantajoso, evitando os custos do processo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-green-50 p-6 rounded-xl border border-green-200">
+                <h3 class="text-xl font-bold text-green-700 mb-3">Cenário B: Diagnóstico de BAIXA ONEROSIDADE (Contrato Regular)</h3>
+                <div class="grid md:grid-cols-2 gap-4 text-sm">
+                    <div class="p-3 border rounded-lg bg-white">
+                        <p class="font-bold text-gray-800 flex items-center gap-1"><i data-lucide="user-check" class="w-4 h-4 text-indigo-600"></i> Cliente / Advogado (Devedor)</p>
+                        <p class="mt-1 text-gray-700">
+                            **AÇÃO DE LIQUIDAÇÃO PARA ACORDO:** O Parecer calcula o **Valor Exato e Legal da Dívida**. Isso é usado para **negociar a quitação** com segurança e transparência.
+                        </p>
+                    </div>
+                    <div class="p-3 border rounded-lg bg-white">
+                        <p class="font-bold text-gray-800 flex items-center gap-1"><i data-lucide="banknote" class="w-4 h-4 text-indigo-600"></i> Instituição Financeira / Advogado (Credor)</p>
+                        <p class="mt-1 text-gray-700">
+                            **AÇÃO DE COBRANÇA LEGAL:** O Parecer liquida a dívida com multas e encargos de mora. Garante a **exatidão do valor cobrado** em Execução Judicial, prevenindo defesas baseadas em erro de cálculo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="text-center mt-12 bg-indigo-50 border border-indigo-200 p-8 rounded-xl shadow-lg">
+            <h3 class="text-2xl font-bold text-indigo-800 mb-3">Transforme o Alerta em Ação Legal</h3>
+            <p class="text-gray-700 mb-6">
+                O Parecer Técnico Pericial transforma a suspeita do Diagnóstico em um plano de ação judicial ou negocial irrefutável.
+            </p>
+            <a href="https://buy.stripe.com/9B64gzen18RXcsAdp9eME02" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-indigo-600 text-white text-xl font-bold rounded-lg shadow-md hover:bg-indigo-700 transition-all">
+                <i data-lucide="gavel" class="w-6 h-6"></i>
+                Solicitar Parecer Técnico Pericial
+            </a>
+        </div>
+
+    </div>
+    
+    <script>
+        // Inicializa os ícones do Lucide
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+</html>
